@@ -27,14 +27,14 @@ public class SecurityConfiguration {
 
 
     private static final String[] SECURITY_MATCHER_LIST = {
-            "/api/v1/auth/**"
+            "/api/auth/**"
     };
 
     private static final String[] WHITE_LIST = {
-            "/api/v1/auth",
-            "/api/v1/auth/login",
-            "/api/v1/auth/register",
-            "/api/v1/auth/refresh-token"
+            "/api/auth",
+            "/api/auth/login",
+            "/api/auth/register",
+            "/api/auth/refresh-token"
     };
     @Bean
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity httpSecurity) {
