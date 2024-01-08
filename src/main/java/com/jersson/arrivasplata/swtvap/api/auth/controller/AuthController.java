@@ -15,7 +15,7 @@ import java.security.Principal;
 
 @Slf4j
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping(value = "/api/auth", produces = "application/vnd.swtvap-api-auth.v1+json")
 public class  AuthController {
 
     @Autowired
