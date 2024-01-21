@@ -52,6 +52,14 @@ public class  AuthController {
                 .body(authService.authRefreshToken(request)));
     }
 
+    @GetMapping("/logout")
+    @ResponseStatus(HttpStatus.OK)
+    public Mono<ResponseEntity<?>> logout(@RequestParam String redirectUri, @RequestParam String idToken) {
+
+        return Mono.just(ResponseEntity.ok()
+                .body(authService.authLogout(redirectUri, idToken)));
+    }
+
     @PreAuthorize("hasRole('ADMIN')")//forbidden - prohibido
     @GetMapping("/read-secret")
     @ResponseStatus(HttpStatus.OK)
@@ -67,5 +75,6 @@ public class  AuthController {
         return Mono.just(ResponseEntity.ok()
                 .body("User  - Hello " + principal.getName()));
     }
+
 
 }

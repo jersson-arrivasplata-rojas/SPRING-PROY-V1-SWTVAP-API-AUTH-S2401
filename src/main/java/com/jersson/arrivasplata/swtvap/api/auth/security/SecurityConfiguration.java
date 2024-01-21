@@ -34,7 +34,8 @@ public class SecurityConfiguration {
             "/api/auth",
             "/api/auth/login",
             "/api/auth/register",
-            "/api/auth/refresh-token"
+            "/api/auth/refresh-token",
+            "/api/auth/logout"
     };
     @Bean
     SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity httpSecurity) {

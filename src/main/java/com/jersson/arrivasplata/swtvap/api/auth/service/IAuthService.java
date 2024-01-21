@@ -13,4 +13,6 @@ public interface IAuthService {
     Mono<ResponseEntity<String>> authRegister(AuthRegisterRequest userRequest);
 
     AuthResponse authRefreshToken(AuthRefreshTokenRequest tokenRequest);
+
+    Object authLogout(String postLogoutRedirectUri, String idTokenHint);
 }

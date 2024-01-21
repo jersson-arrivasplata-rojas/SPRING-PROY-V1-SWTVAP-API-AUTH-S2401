@@ -6,10 +6,7 @@ import com.jersson.arrivasplata.swtvap.api.auth.oauth.OAuth2ServiceProperties;
 import org.keycloak.representations.idm.CredentialRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -112,5 +109,14 @@ public class AuthService implements IAuthService {
         return restTemplate.postForObject(oAuth2ServiceProperties.getTokenUri(), request, AuthResponse.class);
     }
 
+    public LogoutResponse authLogout(String postLogoutRedirectUri, String idTokenHint) {
 
+        OAuth2ServiceProperties oAuth2ServiceProperties = new OAuth2ServiceProperties(env);
+
+        String logoutUrl = oAuth2ServiceProperties.getLogoutUri() + "?post_logout_redirect_uri=" + postLogoutRedirectUri + "&id_token_hint=" + idTokenHint;
+
+        ResponseEntity<?> response =  restTemplate.getForEntity(logoutUrl, String.class);
+
+        return new LogoutResponse(response.getStatusCodeValue());
+    }
 }

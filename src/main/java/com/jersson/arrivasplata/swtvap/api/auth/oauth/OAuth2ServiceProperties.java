@@ -30,6 +30,7 @@ public class OAuth2ServiceProperties {
 
     private String userInfoUri;
 
+    private String logoutUri;
 
     public OAuth2ServiceProperties(Environment env) {
         this.clientId = env.getProperty("spring.security.oauth2.client.registration.gateway.client-id");
@@ -43,5 +44,6 @@ public class OAuth2ServiceProperties {
         this.tokenUri = env.getProperty("spring.security.oauth2.client.provider.keycloak.token-uri");
         this.jwtSetUri = env.getProperty("spring.security.oauth2.client.provider.keycloak.jwk-set-uri");
         this.userInfoUri = env.getProperty("spring.security.oauth2.client.provider.keycloak.user-info-uri");
+        this.logoutUri = env.getProperty("spring.security.oauth2.client.provider.keycloak.logout-uri");
     }
 }
