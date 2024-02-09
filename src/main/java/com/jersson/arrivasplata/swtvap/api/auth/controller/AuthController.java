@@ -39,8 +39,8 @@ public class  AuthController {
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
     public Mono<ResponseEntity<String>> register(@RequestBody AuthRegisterRequest authRequest) {
-
-        return authService.authRegister(authRequest);
+        //@Comment: Solo utilizar cuando se trabaje con una capa mayor de seguridad por front y back return authService.authRegister(authRequest);
+        return Mono.just(ResponseEntity.ok().build());
     }
 
 
